@@ -1,12 +1,45 @@
+<link rel="stylesheet" href="/static/css/styles.css">
 {% block content %}
+<div class="container">
+    <div class="row">
 
-<form action="" class="form" method="post" id="replyform">
-    <label for="post">Reply:</label>
-    <textarea class="form-control" rows="4" cols="50" name="reply_content" form="replyform"></textarea> 
-    <br>
-    <input class="btn btn-primary" type="submit" value="submit">
-    <br>
-    <br>
-</form>
+        <div class="column">
+
+            <H2> Search </H2>
+            <div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">width&nbsp;</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="More than" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Less than" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">height</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="More than" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Less than" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+        </div>
+        <!-- Content here -->
+
+        <div class="column">
+            {% for item in images %}
+            <div class = "postBlock">
+                <div style = "margin-top: 1em;">
+                    <img width="80%" height="80%" src='/static/images/{{item}}' class="rounded d-block m-auto" />
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+
 
 {% endblock %}
