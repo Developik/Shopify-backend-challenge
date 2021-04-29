@@ -10,14 +10,18 @@ def home():
     
     widthList = []
     heightList = []
+    image_tuples = []
+    count = 0
 
     for item in images:
         im = Image.open('static/images/' + item)
         width, height = im.size  
         widthList.append(width)
         heightList.append(height)
+        image_tuples.append([item, count])
+        count += 1
 
-    return render_template("index.html", images = images, widthList = widthList, heightList = heightList)
+    return render_template("index.html", image_tuples = image_tuples, widthList = widthList, heightList = heightList)
 
 @app.after_request
 def add_header(r):
@@ -30,6 +34,6 @@ def add_header(r):
     r.headers["Expires"] = "0"
     r.headers['Cache-Control'] = 'public, max-age=0'
     return r
-    
+
 if __name__ == "__main__":
     app.run(debug=True)

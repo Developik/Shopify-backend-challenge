@@ -21,17 +21,34 @@
                     <input type="text" class="form-control" placeholder="More than" aria-describedby="basic-addon1">
                     <input type="text" class="form-control" placeholder="Less than" aria-describedby="basic-addon1">
                 </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">format</span>
+                    </div>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Choose Format</option>
+                        <option value="1">PNG</option>
+                        <option value="2">JPG</option>
+                    </select>
+                </div>
             </div>
 
         </div>
         <!-- Content here -->
 
         <div class="column">
-            {% for item in images %}
+            {% for item in image_tuples %}
             <div class="postBlock">
 
-                <img width="80%" height="80%" srcset='/static/images/{{item}}' style = "padding-top: 1em;"class="rounded d-block m-auto" />
+                <img width="80%" height="80%" srcset='/static/images/{{item[0]}}' style="padding-top: 1em;"
+                    class="rounded d-block m-auto" />
                 <hr />
+                {% autoescape false %}
+                <div style="text-align: center;">
+                    <a> Original Width : {{ widthList[item[1]] }}</a>
+                    <a> Original Height : {{ heightList[item[1]] }}</a>
+                </div>
+                {% endautoescape %}
             </div>
 
 
