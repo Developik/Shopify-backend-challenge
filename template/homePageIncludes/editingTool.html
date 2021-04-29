@@ -28,11 +28,13 @@
 
         <div class="column">
             {% for item in images %}
-            <div class = "postBlock">
-                <div style = "margin-top: 1em;">
-                    <img width="80%" height="80%" src='/static/images/{{item}}' class="rounded d-block m-auto" />
-                </div>
+            <div class="postBlock">
+
+                <img width="80%" height="80%" srcset='/static/images/{{item}}' style = "padding-top: 1em;"class="rounded d-block m-auto" />
+                <hr />
             </div>
+
+
             {% endfor %}
         </div>
     </div>
