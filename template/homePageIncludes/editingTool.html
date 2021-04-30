@@ -6,20 +6,24 @@
         <div class="column">
 
             <H2> Search </H2>
-            <form role="form" method='POST' action="/">
+            <form role="form" method='POST' action = "/" id="search-form">
                 <div class="input-group mb-3 form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">width&nbsp;</span>
                     </div>
-                    <input type="text" class="form-control" name="more_width" placeholder="More than" aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" name="less_width" placeholder="Less than" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="more_width" id="more_width" placeholder="More than"
+                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="less_width" id="less_width" placeholder="Less than"
+                        aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3 form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">height</span>
                     </div>
-                    <input type="text" class="form-control" name="more_height" placeholder="More than" aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" name="less_height" placeholder="Less than" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="more_height" id="more_height" placeholder="More than"
+                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="less_height" id="less_height" placeholder="Less than"
+                        aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3 form-group">
                     <div class="input-group-prepend">
@@ -58,8 +62,7 @@
     </div>
 </div>
 
-
-
-
-
 {% endblock %}
+
+
+
