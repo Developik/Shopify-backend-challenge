@@ -6,22 +6,22 @@
         <div class="column">
 
             <H2> Search </H2>
-            <div>
-                <div class="input-group mb-3">
+            <form role="form" method='POST' action="/">
+                <div class="input-group mb-3 form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">width&nbsp;</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="More than" aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" placeholder="Less than" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="more_width" placeholder="More than" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="less_width" placeholder="Less than" aria-describedby="basic-addon1">
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3 form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">height</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="More than" aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" placeholder="Less than" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="more_height" placeholder="More than" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="less_height" placeholder="Less than" aria-describedby="basic-addon1">
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3 form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">format</span>
                     </div>
@@ -31,7 +31,8 @@
                         <option value="2">JPG</option>
                     </select>
                 </div>
-            </div>
+                <button type="submit" class="btn btn-info">Search</button>
+            </form>
 
         </div>
         <!-- Content here -->
