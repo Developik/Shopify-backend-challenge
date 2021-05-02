@@ -22,3 +22,29 @@
   height: 310px;
   width: 450px;
 }
+
+.button_del{
+  display: flex;
+  flex: 1;
+  align-self: center;
+}
+
+.trapezoid_par {
+  border-radius: 10%;
+}
+
+.trapezoid_delete {
+  display: block;
+  margin-top: 0.5em;
+
+  display:inline-block;
+	cursor:pointer;
+  padding:16px 31px;
+
+  border-top: 25px solid rgba(0, 0, 0, 0.5);
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  height: 0;
+  width: 450px;
+
+}

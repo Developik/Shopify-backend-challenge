@@ -6,7 +6,7 @@
         <div class="column">
 
             <H2> Search </H2>
-            <form role="form" method='POST' action = "/" id="search-form">
+            <form role="form" method='POST' action="/" id="search-form">
                 <div class="input-group mb-3 form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">width&nbsp;</span>
@@ -29,10 +29,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">format</span>
                     </div>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Choose Format</option>
+                    <select class="form-select" name="img_format" id="img_format" aria-label="Default select example">
+                        <option selected>All</option>
                         <option value="1">PNG</option>
-                        <option value="2">JPG</option>
+                        <option value="2">JPEG</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-info">Search</button>
@@ -50,11 +50,20 @@
                 <hr />
                 {% autoescape false %}
                 <div style="text-align: center;">
-                    <a> Original Width : {{ widthList[item[1]] }}</a>
-                    <a> Original Height : {{ heightList[item[1]] }}</a>
+                    <a style="font-size:15px"> Original Width : {{ widthList[item[1]] }}</a>
+                    <a style="font-size:15px"> | Original Height : {{ heightList[item[1]] }}</a>
+                    <a style="font-size:15px"> | Format : {{ formatList[item[1]] }}</a>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <form role="form" method='POST' action="/delete-image" id="delete-image">
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                        <input type="hidden" class="form-control" name="img_id" id="id_{{item[1]}}"
+                            value="{{filenames[item[1]]}}">
+                    </form>
                 </div>
                 {% endautoescape %}
             </div>
+
 
 
             {% endfor %}
@@ -63,6 +72,3 @@
 </div>
 
 {% endblock %}
-
-
-

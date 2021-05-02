@@ -14,13 +14,16 @@ def home():
     widthList = []
     heightList = []
     image_tuples = []
+    formatList = []
+    filenames = []
     count = 0
 
     img_param = {
         "more_width" : 0,
         "less_width" : sys.maxsize,
         "more_height" : 0,
-        "less_height" : sys.maxsize}
+        "less_height" : sys.maxsize,
+        "img_format" : "All"}
 
     # add request validation
     if request.method == "POST":
@@ -34,7 +37,13 @@ def home():
                 img_param["more_height"] = int(request.form['more_height'])
             if (request.form['less_height'] != ""):
                 img_param["less_height"] = int(request.form['less_height'])
-            #print(img_param)
+            if (request.form['less_height'] != "All"):
+                img_param["img_format"] = int(request.form['img_format'])
+                if (img_param["img_format"] == 1):
+                    img_param["img_format"] = "PNG"
+                elif (img_param["img_format"] == 2):
+                    img_param["img_format"] = "JPEG"
+            #print(img_param):
         except Exception as e:
             print (e)
             errors.append(
@@ -45,26 +54,41 @@ def home():
     print(img_param["less_width"])
     print(img_param["more_height"])
     print(img_param["less_height"])
+    print(img_param["img_format"])
 
     for item in images:
         im = Image.open('static/images/' + item)
         width, height = im.size  
 
-
-
         if (img_param["more_width"] <= width 
         and  img_param["less_width"] >= width
         and  img_param["more_height"] <= height
-        and  img_param["less_height"] >= height):
+        and  img_param["less_height"] >= height
+        and  (img_param["img_format"] == "All" or img_param["img_format"] == im.format)):
             widthList.append(width)
             heightList.append(height)
             image_tuples.append([item, count])
+            formatList.append(im.format)
+            filenames.append(im.filename)
             count += 1
 
 
 
-    return render_template("index.html", image_tuples = image_tuples, widthList = widthList, heightList = heightList)
+    return render_template("index.html", image_tuples = image_tuples, widthList = widthList,
+     heightList = heightList, formatList = formatList, filenames = filenames)
 
+
+@app.route("/delete-image", methods=['POST'])
+def delete_image():
+
+    images = os.listdir('static/images/')
+
+    #print(request.form['img_id'])
+    try:
+        os.remove(request.form['img_id']) 
+    except Exception:
+        pass
+    return redirect("/", code=302)
 
 @app.after_request
 def add_header(r):
@@ -79,4 +103,5 @@ def add_header(r):
     return r
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
