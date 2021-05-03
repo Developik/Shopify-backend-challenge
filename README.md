@@ -10,7 +10,7 @@ Search is based on the original size of the image. Images could also be filtered
 Flask server will be deployed on the http://127.0.0.1:5000/
 More functionality might be added if the time allows.
 
-![alt text](https://github.com/Developik/Shopify-backend-challenge/readme_imgs/img1.png?raw=true)
+![alt text](https://github.com/Developik/Shopify-backend-challenge/blob/master/readme_imgs/img1.png?raw=true)
 
 # Table of Contents
 - [Setup](#Setup)
