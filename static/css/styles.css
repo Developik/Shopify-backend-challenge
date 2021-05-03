@@ -29,22 +29,53 @@
   align-self: center;
 }
 
-.trapezoid_par {
-  border-radius: 10%;
+
+.drop-zone {
+  height: 200px;
+  padding: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: #cccccc;
+  border: 2px dashed #138496;
+  border-radius: 10px;
 }
 
-.trapezoid_delete {
-  display: block;
-  margin-top: 0.5em;
-
-  display:inline-block;
-	cursor:pointer;
-  padding:16px 31px;
-
-  border-top: 25px solid rgba(0, 0, 0, 0.5);
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  height: 0;
-  width: 450px;
-
+.drop-zone--over {
+  border-style: solid;
 }
+
+.drop-zone__input {
+  display: none;
+}
+
+.drop-zone__thumb {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #cccccc;
+  background-size: cover;
+  position: relative;
+}
+
+.drop-zone__thumb::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 0;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  text-align: center;
+}
+

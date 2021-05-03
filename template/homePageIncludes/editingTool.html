@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="/static/css/styles.css">
+
 {% block content %}
 <div class="container">
     <div class="row">
 
+        <!-- First Column -->
         <div class="column">
 
             <H2> Search </H2>
@@ -38,9 +40,29 @@
                 <button type="submit" class="btn btn-info">Search</button>
             </form>
 
-        </div>
-        <!-- Content here -->
+            <!-- Drag and drop form is done according with the following tutorial:
+                https://www.youtube.com/watch?v=Wtrin7C4b7w
+            -->
 
+
+            <form method="post" action="/image-upload" enctype="multipart/form-data">
+                <div class="drop-zone">
+                    <span class="drop-zone__prompt">
+                        Drop file here or click to upload<br>
+                        Supported formats : <i>.jpg, .jpeg, .png</i>
+                    </span>
+                    <input type="file" name="myFile" class="drop-zone__input">
+                </div>
+                <button type="submit" class="btn btn-info">Upload</button>
+            </form>
+
+
+
+
+
+        </div>
+
+        <!-- Second Column -->
         <div class="column">
             {% for item in image_tuples %}
             <div class="postBlock">
@@ -71,4 +93,5 @@
     </div>
 </div>
 
+<script src="/static/js/myDropzone.js"></script>
 {% endblock %}
