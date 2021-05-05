@@ -113,17 +113,9 @@ def add_header(r):
 def upload_image():
 
     images = os.listdir('static/images/')
-
-    print(request)
-
     uploaded_image = request.files['myFile']
     if (allowed_file(uploaded_image.filename)):
         uploaded_image.save('./static/images/img'+str(len(images)+1)+'.'+uploaded_image.filename.rsplit('.', 1)[1].lower())
-    try:
-        i = 1
-    except Exception as e:
-        print(e)
-    
 
     return redirect("/", code=302)
 
