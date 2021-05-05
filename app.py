@@ -3,8 +3,15 @@ import os
 import sys
 import requests
 from PIL import Image
+from requests_toolbelt.multipart import decoder
 
 app = Flask(__name__, template_folder='template')
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -102,9 +109,23 @@ def add_header(r):
     r.headers['Cache-Control'] = 'public, max-age=0'
     return r
 
-@app.route("/upload-image", methods=['POST'])
+@app.route("/image-upload", methods=['POST'])
 def upload_image():
+
     images = os.listdir('static/images/')
+
+    print(request)
+
+    uploaded_image = request.files['myFile']
+    if (allowed_file(uploaded_image.filename)):
+        uploaded_image.save('./static/images/img'+str(len(images)+1)+'.'+uploaded_image.filename.rsplit('.', 1)[1].lower())
+    try:
+        i = 1
+    except Exception as e:
+        print(e)
+    
+
+    return redirect("/", code=302)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
