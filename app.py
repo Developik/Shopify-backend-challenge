@@ -88,13 +88,18 @@ def home():
 @app.route("/delete-image", methods=['POST'])
 def delete_image():
 
-    images = os.listdir('static/images/')
-
     #print(request.form['img_id'])
     try:
         os.remove(request.form['img_id']) 
     except Exception:
         pass
+
+    images = os.listdir('static/images/')
+    count = 1
+    for item in images:
+        print(item)
+        os.rename('./static/images/'+item, './static/images/img' + str(count) + os.path.splitext(item)[1].lower())
+        count += 1
     return redirect("/", code=302)
 
 @app.after_request
@@ -114,8 +119,10 @@ def upload_image():
 
     images = os.listdir('static/images/')
     uploaded_image = request.files['myFile']
+
+
     if (allowed_file(uploaded_image.filename)):
-        uploaded_image.save('./static/images/img'+str(len(images)+1)+'.'+uploaded_image.filename.rsplit('.', 1)[1].lower())
+        uploaded_image.save('./static/images/img'+str(len(images)+1)+'.'+os.path.splitext(uploaded_image.filename)[1].lower())
 
     return redirect("/", code=302)
 
